@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-class Bureaucrat : public std::exception
+class Bureaucrat
 {
 	private:
 		const std::string	name;
@@ -20,6 +20,9 @@ class Bureaucrat : public std::exception
 		int getGrade() const;
 		void upgrade();
 		void downgrade();
+		
+		static const char *GradeTooHighException;
+		static const char *GradeTooLowException;
 };
 
-std::ostream	&operator<<(std::ostream &o, const Bureaucrat &rhs);
+std::ostream	&operator<<(std::ostream &out, const Bureaucrat &rhs);
