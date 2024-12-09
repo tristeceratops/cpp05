@@ -28,8 +28,17 @@ class Form
 
 		void beSigned(Bureaucrat &bureaucrat);
 
-		static const char *GradeTooHighException;
-		static const char *GradeTooLowException;
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 
 };
 

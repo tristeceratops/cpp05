@@ -12,6 +12,7 @@
 
 int main()
 {
+
     Bureaucrat* Albert = NULL;
     Bureaucrat* Robert = NULL;
     try
@@ -19,27 +20,27 @@ int main()
         Albert = new Bureaucrat("Albert", 155);
         Robert = new Bureaucrat("Robert", -4);
     }
-    catch(const char *error)
+    catch(const std::exception& e)
     {
-        std::cerr << RED << "constructor 1 catch error : " << error << '\n' << RESET;
+        std::cerr << RED << "constructor 1 catch error : " << e.what() << '\n' << RESET;
     }
     try
     {
         Robert = new Bureaucrat("Robert", -4);
         Albert = new Bureaucrat("Albert", 155);
     }
-    catch(const char *error)
+    catch(const std::exception& e)
     {
-        std::cerr << RED << "constructor 2 catch error : " << error << '\n' << RESET;
+        std::cerr << RED << "constructor 2 catch error : " << e.what() << '\n' << RESET;
     }
     try
     {
         Robert = new Bureaucrat("Robert", 4);
         Albert = new Bureaucrat("Albert", 85);
     }
-    catch(const char *error)
+    catch(const std::exception& e)
     {
-        std::cerr << RED << "constructor 3 catch error : " << error << '\n' << RESET;
+        std::cerr << RED << "constructor 3 catch error : " << e.what() << '\n' << RESET;
     }
     Bureaucrat Roger = Bureaucrat("Roger", 47);
     std::cout << *Robert << std::endl;
@@ -49,18 +50,18 @@ int main()
 	{
 		Roger.downgrade(150);
 	}
-	catch(const char *error)
+	catch(const std::exception& e)
 	{
-        std::cerr << RED << "Downgrade catch error : " << error << '\n' << RESET;
+        std::cerr << RED << "Downgrade catch error : " << e.what() << '\n' << RESET;
 	}	
 	std::cout << Roger << std::endl;
 	try
 	{
 		Roger.upgrade(300);
 	}
-	catch(const char *error)
+	catch(const std::exception& e)
 	{
-        std::cerr << RED << "upgrade catch error : " << error << '\n' << RESET;
+        std::cerr << RED << "upgrade catch error : " << e.what() << '\n' << RESET;
 	}
 	std::cout << Roger << std::endl;
 	
