@@ -1,6 +1,10 @@
 #pragma once
 
 #include <iostream>
+#include "Form.hpp"
+
+
+class Form;
 
 class Bureaucrat
 {
@@ -22,6 +26,8 @@ class Bureaucrat
 		void downgrade();
 		void upgrade(int i);
 		void downgrade(int i);
+		
+		void signForm(Form &form);
 		
 		static const char *GradeTooHighException;
 		static const char *GradeTooLowException;

@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 
-const char* Bureaucrat::GradeTooHighException = "GradeTooHighException";
-const char* Bureaucrat::GradeTooLowException = "GradeTooLowException";
+const char* Bureaucrat::GradeTooHighException = "Bureaucrat::GradeTooHighException";
+const char* Bureaucrat::GradeTooLowException = "Bureaucrat::GradeTooLowException";
 
 Bureaucrat::Bureaucrat() : _name("noname"), _grade(150){}
 
@@ -74,4 +74,21 @@ std::ostream& operator<<(std::ostream &out, const Bureaucrat &rhs)
 {
 	out << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << ".";
 	return out;
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	if (form.getGradeToSign() < this->getGrade())
+	{
+		std::cout << this->getName() << " cannot sign " << form.getName() << " because his grade is too low" << std::endl;
+	}
+	else if (form.getSigned())
+	{
+		std::cout << this->getName() << " cannot sign " << form.getName() << " because it is already signed" << std::endl;
+	}
+	else
+	{
+		form.beSigned(*this);
+		std::cout << this->getName() << " signs " << form.getName() << std::endl;
+	}
 }
