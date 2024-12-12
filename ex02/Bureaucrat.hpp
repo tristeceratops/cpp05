@@ -1,10 +1,10 @@
 #pragma once
 
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -27,10 +27,20 @@ class Bureaucrat
 		void upgrade(int i);
 		void downgrade(int i);
 		
-		void signForm(Form &form);
+		void signForm(AForm &form);
+		void executeForm(AForm const &form);
 		
-		static const char *GradeTooHighException;
-		static const char *GradeTooLowException;
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
 std::ostream	&operator<<(std::ostream &out, const Bureaucrat &rhs);

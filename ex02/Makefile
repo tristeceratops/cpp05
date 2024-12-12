@@ -1,6 +1,6 @@
-NAME := maggots
+NAME := 28B
 FLAGS := -Wall -Wextra -Werror -std=c++98 -g
-FILES := main.cpp Bureaucrat.cpp Form.cpp
+FILES := main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJ := $(FILES:.cpp=.o)
 
 all: $(NAME)
