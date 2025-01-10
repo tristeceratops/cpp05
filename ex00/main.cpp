@@ -17,8 +17,8 @@ int main()
     Bureaucrat* Robert = NULL;
     try
     {
-        Albert = new Bureaucrat("Albert", 155);
-        Robert = new Bureaucrat("Robert", -4);
+        Albert = new Bureaucrat("Albert", 155); //too high
+        Robert = new Bureaucrat("Robert", -4); //too low
     }
     catch(const std::exception& e)
     {
@@ -26,8 +26,8 @@ int main()
     }
     try
     {
-        Robert = new Bureaucrat("Robert", -4);
-        Albert = new Bureaucrat("Albert", 155);
+        Robert = new Bureaucrat("Robert", -4); //too low
+        Albert = new Bureaucrat("Albert", 155); //too high
     }
     catch(const std::exception& e)
     {
@@ -48,7 +48,7 @@ int main()
     std::cout << Roger << std::endl;
 	try
 	{
-		Roger.downgrade(150);
+		Roger.downgrade(150); //too low after downgrade
 	}
 	catch(const std::exception& e)
 	{
@@ -57,14 +57,33 @@ int main()
 	std::cout << Roger << std::endl;
 	try
 	{
-		Roger.upgrade(300);
+		Roger.upgrade(300); //too high after upgrade
 	}
 	catch(const std::exception& e)
 	{
         std::cerr << RED << "upgrade catch error : " << e.what() << '\n' << RESET;
 	}
 	std::cout << Roger << std::endl;
-	
+	try
+	{
+		Roger.upgrade(4);
+		Roger.upgrade();
+	}
+	catch(const std::exception& e)
+	{
+        std::cerr << RED << "upgrade catch error : " << e.what() << '\n' << RESET;
+	}
+	std::cout << Roger << std::endl;
+	try
+	{
+		Roger.downgrade(15);
+		Roger.downgrade();
+	}
+	catch(const std::exception& e)
+	{
+        std::cerr << RED << "upgrade catch error : " << e.what() << '\n' << RESET;
+	}
+	std::cout << Roger << std::endl;
 
     delete Albert;
     delete Robert;
